@@ -1,7 +1,7 @@
 <template>
     
     <!-- <div class="backdrop" :class="show ? 'invisible':'red'" ref="mod"> -->
-    <div  class="back"  @click.self="hideModal">
+    <div class="back"  @click.self="hideModal">
         <div class="modal">            
             <slot></slot> 
             <div class="actions">

@@ -3,36 +3,38 @@
     <h3>{{title}}</h3>
     <input type="text" ref="zoo">
     <button @click="handleClick">Click me</button>
-    <div></div>
-    
-    <!-- <router-link to="/"></router-link> | -->
-    <!-- <router-link to="/about">About</router-link> -->
+    <hr>       
+    <router-link to="/about">About</router-link>
+    <hr>
     <button @click="toggleSignUp">Sign Up</button>
     <button @click="toggleLogIn">Login</button>
 
-    <div  v-if="showSignUp">
-      <Modal @closeModal="toggleSignUp" >
-        <slot>Welcome to SignUp</slot>
-        <template v-slot:signItUp>          
-          <a href="#">contact us</a>
-          <p >here comes a singup form</p>
-        </template>
-      </Modal>
-    </div>
-    
-    <div v-if="showLogIn">
-      <Modal @closeModal="toggleLogIn" >
-        <slot>
-          <p >test it</p>
-          Welcome to LogIn</slot>
-        <template v-slot:logItIn>
-          <a href="#">one link</a>
-          <p>here comes a login form</p>
-        </template>
-      </Modal>
-    </div>
+    <teleport to=".modals">
+      <div v-if="showSignUp">      
+        <Modal @closeModal="toggleSignUp" >
+          <slot>Welcome to SignUp</slot>
+          <template v-slot:signItUp>          
+            <a href="#">contact us</a>
+            <p >here comes a singup form</p>
+          </template>
+        </Modal>     
+      </div>
+    </teleport>
+    <teleport to=".modals">
+      <div v-if="showLogIn">
+        <Modal @closeModal="toggleLogIn" >
+          <slot>
+            <p >test it</p>
+            Welcome to LogIn</slot>
+          <template v-slot:logItIn>
+            <a href="#">one link</a>
+            <p>here comes a login form</p>
+          </template>
+        </Modal>
+      </div>
+    </teleport>
  
-  <!-- <router-view/> -->
+  <router-view/>
 </template>
 
 <script>
