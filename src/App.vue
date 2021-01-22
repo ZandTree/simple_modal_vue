@@ -76,14 +76,5 @@ export default {
 .marine{
   background-color:#b5e5cf;
 }
-.modal .actions a {
-    color:rgb(240, 12, 23);
-    padding:8px;
-    border:1px solid #eee;
-    border-radius: 4px;
-    text-decoration: none;
-    margin:10px;
-    font-size: 2rem;
-}
 
 </style> 
