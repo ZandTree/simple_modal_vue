@@ -1,7 +1,3 @@
-body{
-  /* background-color: #f3efe6; */
-  /* font-weight: bold; */
-}
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -9,4 +5,8 @@ body{
     text-align: center;
     color: #2c3e50;
   }
-  
+.menu{
+  display: flex;
+  justify-content: space-around;
+  background-color: blanchedalmond;
+}  

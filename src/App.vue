@@ -1,13 +1,21 @@
 <template>
-  
-    <h3>{{title}}</h3>
-    <input type="text" ref="zoo">
-    <button @click="handleClick">Click me</button>
-    <hr>       
-    <router-link to="/about">About</router-link>
-    <hr>
+<div class="menu">
+  <div class="menu-item">
     <button @click="toggleSignUp">Sign Up</button>
+    </div>
+    <div class="menu-item">
     <button @click="toggleLogIn">Login</button>
+    </div>
+</div> 
+<div class="menu"> 
+  <div class="menu-item">
+    <router-link to="/test-it">Play</router-link>    
+  </div>
+  <div class="menu-item">
+    <router-link to="/about">About</router-link>
+  </div>
+    
+</div>    
 
     <teleport to=".modals">
       <div v-if="showSignUp">      
@@ -39,10 +47,12 @@
 
 <script>
 import Modal from '@/components/Modal.vue'
+
 export default {
   name:"App",
   components:{
-    Modal
+    Modal,
+    
   },
   data(){
     return {

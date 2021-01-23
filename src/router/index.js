@@ -1,7 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-
-const routes = [    
+import Play from '@/views/Play.vue'
+const routes = [   
+  {
+    path:'/test-it',
+    name:'Play',
+    component:Play
+  }, 
   {
     path: '/about',
     name: 'About',

@@ -1,0 +1,8 @@
+1. home page with
+    button == after 1-2 sec 
+    # 1.1 becomes clickable 
+    #1.2 box appears
+2. #user clicks the box as soon as he can 
+3.final result at the home page:
+    3.1 timedelta: time click - time box appears
+    3.2 comment on result: slow,fast,very fast,snail pace
