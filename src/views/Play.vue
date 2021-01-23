@@ -1,65 +1,58 @@
 <template>
   <div class="container">
-    <h1>Your result = {{getPace}} seconds</h1>
+   
     <div class="display-static">
-      <h1>Reaction Timer</h1>
-      <!-- <button @click="letsPlay" 
-      class="but-active" :disabled="isPlaying">
+      
+      <Result :score="score" v-if="showResults"></Result>
+      <!-- <button @click="start" 
+      class='but-active'>
         Play
       </button>   -->
-      <button @click="letsPlay" 
+      <button @click="start" 
       :class="isPlaying ? 'but-blur' : 'but-active'">
         Play
       </button>  
-    </div>
-  <div v-if="showBox" class="box" @click="startCountDown">
-
-  </div>
+    </div> 
+    <Box v-if="isPlaying" :delay="delay" @mSec="displayResult"></Box> 
+  
   <hr> 
   </div>
 </template>
 
 <script>
-function getRandomInterval(min=2, max=5) {
-  //The maximum is exclusive and the minimum is inclusive  
-  return Math.random() * (max - min) + min;  
-}
+import Box from '@/components/Box.vue';
+import Result from '@/components/Result.vue'
 
 export default {
-  name: 'Play', 
+  name: 'Play',
+  components:{
+    Box,
+    Result
+  }, 
   data(){
     return{
       isPlaying:false,
       showBox:false,
-      // delay:null,
-      startMsec:0,
-      endMsec:0
+      delay:null,
+      score:null,
+      showResults:false
     }
   },
   methods:{
-   letsPlay(){
+   start(){
      this.isPlaying =!this.isPlaying;
-     let interv = getRandomInterval()*1000;
-     console.log("in letsPlay",interv)
-     setTimeout(() => {
-        //  console.log("clicable",this.initial);
-        //  console.log(getRandomInterval())
-          this.showBox = true
-          this.startMsec = new Date().getTime();    
-      }, interv);
-    },
-   startCountDown(){
-     this.endMsec = new Date().getTime();
-      
-      }
-   },
-   computed:{
-     getPace(){
-      return (this.endMsec - this.startMsec)/1000;
-      // return Math.round(this.endMsec - this.startMsec);
-    
-     }
-   }
+     this.delay = 2000 + Math.random()*3000 //2000msec - 5 msec
+     console.log("delay is",this.delay);     
+      },
+      displayResult(pace){
+        console.log("speed is: ",pace);
+        this.score = pace;
+        this.isPlaying = false;
+        this.showResults = true
+    }  
+   
+  },
+  
 } 
 
 </script>
@@ -67,17 +60,18 @@ export default {
 .display-static{
   margin-bottom: 2rem;
 }
-.box{
+/* .box{
   width:300px;
   height: 300px;
   margin: 50px auto;
   background-color: forestgreen;
-}
+} */
 .but-active{
     background-color: darkred;
     color:wheat;
     padding:20px;
     margin-bottom: 2rem;
+    cursor: pointer;
     
 }
 .but-blur{
@@ -85,6 +79,7 @@ export default {
     pointer-events: none;
      padding:20px;
     margin-bottom: 2rem;
+    cursor:not-allowed;
 }
 
 </style>
