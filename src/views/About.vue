@@ -4,6 +4,9 @@
   <button @click="showOne">Show modal one</button>
   <button @click="showTwo">Show modal two</button>
   <hr>
+  <p>Lorem, ipsum dolor 
+    sit amet consectetur adipisicing elit. Hic ad delectus laudantium quod, atque, eum praesentium eveniet mollitia minus voluptas accusantium, laborum architecto dolores. Maxime minima impedit dolores cupiditate laboriosam optio iusto, in cumque! Laboriosam fuga iusto deserunt! Dolorem sit veritatis id soluta eligendi quis! Reiciendis id dolor necessitatibus incidunt!
+  </p>
   <teleport to=".modals" >
     <div class="wrapper" v-if="above">
       <div class="modal-kern">

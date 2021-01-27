@@ -1,22 +1,36 @@
 <template>
-<div class="menu">
-  <div class="menu-item">
-    <button @click="toggleSignUp">Sign Up</button>
+
+  <!-- class="router-link-active router-link-exact-active" -->
+  <div id="nav">
+    <div class="menu-item">
+      <router-link to="/">Home</router-link>       
     </div>
     <div class="menu-item">
-    <button @click="toggleLogIn">Login</button>
+      <!-- to="/about" static -->
+      <router-link :to="{name:'About'}"
+      >About</router-link>    
     </div>
-</div> 
-<div class="menu"> 
-  <div class="menu-item">
-    <router-link to="/test-it">Play</router-link>    
-  </div>
-  <div class="menu-item">
-    <router-link to="/about">About</router-link>
-  </div>
-    
-</div>    
+    <div class="menu-item">    
+      <button @click="toggleSignUp">Sign Up</button>
+    </div>  
+    <div class="menu-item">
+      <button @click="toggleLogIn">Login</button>
+    </div>
+    <div class="menu-item">
+      <router-link to="/test-it">Play</router-link>    
+    </div>
+    <div class="menu-item">
+      <router-link to="/sign-up-form">Form</router-link>    
+    </div>
+      
+  </div> 
+  <hr>
+  <button @click="redirect">Re-direct</button>
+  <button @click="back">Go Back</button>
+  <button @click="forward">Go forward</button>
 
+  <hr>
+ 
     <teleport to=".modals">
       <div v-if="showSignUp">      
         <Modal @closeModal="toggleSignUp" >
@@ -46,13 +60,14 @@
 </template>
 
 <script>
-import Modal from '@/components/Modal.vue'
+import Modal from '@/components/Modal.vue';
+
 
 export default {
   name:"App",
   components:{
-    Modal,
-    
+    Modal,    
+   
   },
   data(){
     return {
@@ -76,8 +91,17 @@ export default {
     toggleLogIn(){
       this.showLogIn = !this.showLogIn;
       console.log("log in",this.showLogIn);
-    }
+    },
+  redirect(){
+
+  },
+  back(){
+    this.$router.go(-1)
+  },
+  forward(){
+    this.$router.go( 1)
   }
+  },
 }
 </script>
 
@@ -86,5 +110,36 @@ export default {
 .marine{
   background-color:#b5e5cf;
 }
-
+#nav{
+  padding-top:1rem;
+  display: flex;
+  justify-content: space-around;
+}
+#nav a{
+   padding:5px;
+  background: rgb(15, 199, 113);
+  border-radius: 10px;
+  color:white;
+  /* display: inline-block; */
+}
+#nav a.router-link-active{
+  padding:5px;
+  background: purple;
+  border-radius: 10px;
+  color:white;
+  /* display: inline-block; */
+}
+#nav a.router-link-exact-active{
+  padding:5px;
+  background:rosybrown;
+  border-radius: 10px;
+  display: inline-block;
+}
+button{
+  margin:0 10px;
+  padding:10px;
+  border:none;
+  border-radius: 4px;
+  background-color: silver;
+}
 </style> 
